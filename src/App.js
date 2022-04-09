@@ -10,12 +10,6 @@ function App() {
   console.log(tasks);
   console.log(name);
 
-  // const handleChange = (ev) => {
-  //   setName((prevState) => ({
-  //     ...prevState,
-  //     [ev.target.name]: ev.target.value,
-  //   }));
-  // };
 
   const addTask = (ev) => {
     setName(ev.target.value);
@@ -43,6 +37,13 @@ function App() {
     ]);
     setName("");
   };
+
+
+//TODO: mostrar active tasks no debe suponer alterar el estado tasks
+// const showActiveTasks = (ev) =>{
+// const activeTasks = tasks.filter(task=>task.completed===false);
+// setTasks(activeTasks);
+// }
 
 
   return (
@@ -85,9 +86,9 @@ function App() {
         </button>
       </form>
       <div className="show-buttons">
-        <button>Show All</button>
-        <button>Show All Active</button>
-        <button>Show All Completed</button>
+        <button className="show-buttons-item show-all" /* onClick={showAllTasks} */>Show All</button>
+        <button className="show-buttons-item show-active" /* onClick={showActiveTasks} */>Show All Active</button>
+        <button className="show-buttons-item show-completed" /* onClick={showCompletedTask} */>Show All Completed</button>
       </div>
     </>
   );

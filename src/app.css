@@ -31,6 +31,26 @@
 }
 
 .show-buttons{
+    display:flex;
+    flex-direction: column;
+    gap: 2rem;
     text-align: center;
     margin-top:5rem;
+}
+
+.show-buttons-item{
+ /*    width:50%; */
+}
+
+.show-active{
+background-color: yellow;
+
+}
+
+.show-completed{
+background-color: red;
+}
+
+.show-all{
+    background-color: green;
 }
