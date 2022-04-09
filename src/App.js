@@ -1,11 +1,14 @@
 // import "./App.css";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 
 function App() {
   const [name, setName] = useState("");
   const [tasks, setTasks] = useState([]);
+
   console.log(tasks);
   console.log(name);
+ 
 
   // const handleChange = (ev) => {
   //   setName((prevState) => ({
@@ -14,13 +17,32 @@ function App() {
   //   }));
   // };
 
-  const handleChange = (ev) => {
+  const addTask = (ev) => {
     setName(ev.target.value);
   };
 
+  const deleteTask = (ev, id) => {
+    setTasks(tasks.filter((task) => task.id != id));
+  };
+
+  const checkTask = (ev, id) => {
+    const tasksAfterCheck = tasks.map(task => {
+      if (task.id === id){
+        task.completed = !task.completed
+      }
+      return task     
+    });
+    setTasks(tasksAfterCheck);
+  };
+
+  //bug: cuando borras una task si hay inputs checkbox marcados debajo, estos se desmarcan (aunque los valores se mantienen)
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    setTasks((prevState) => [...prevState, { name: name, completed: false }]);
+    setTasks((prevState) => [
+      ...prevState,
+      { id: nanoid(), name: name, completed: false },
+    ]);
   };
 
   return (
@@ -30,14 +52,19 @@ function App() {
         <ul>
           {" "}
           {tasks.length
-            ? tasks.map((task, index) => (
+            ? tasks.map((task) => (
                 <>
-                  <li key={index}>
+                  <li key={task.id}>
                     {task.name}
-                    <input type="button" />
-                    Edit
-                    <input type="button" />
-                    Delete
+                    <input
+                      type="checkbox"
+                      onChange={(ev) => checkTask(ev, task.id)}
+                    />
+                    Completed
+                    <button>Edit</button>
+                    <button onClick={(ev) => deleteTask(ev, task.id)}>
+                      Delete
+                    </button>
                   </li>
                 </>
               ))
@@ -45,14 +72,16 @@ function App() {
         </ul>
       </div>
 
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <input type="textarea" name="name" onChange={handleChange} />
-            <button type="submit">Agregar</button>
-          </label>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input type="textarea" name="name" onChange={addTask} />
+          <button type="submit">Agregar</button>
+        </label>
+      </form>
+
+      <button>Show All</button>
+      <button>Show All Active</button>
+      <button>Show All Completed</button>
     </>
   );
 }
