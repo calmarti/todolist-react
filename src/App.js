@@ -1,24 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("");
+  const [tasks, setTasks] = useState([]);
+  console.log(tasks);
+  console.log(name);
+
+  // const handleChange = (ev) => {
+  //   setName((prevState) => ({
+  //     ...prevState,
+  //     [ev.target.name]: ev.target.value,
+  //   }));
+  // };
+
+  const handleChange = (ev) => {
+    setName(ev.target.value);
+  };
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    setTasks((prevState) => [...prevState, { name: name, completed: false }]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h2> My First (Ever) Todo List</h2>
+      <div className="list">
+        <ul>
+          {" "}
+          {tasks.length
+            ? tasks.map((task, index) => (
+                <>
+                  <li key={index}>
+                    {task.name}
+                    <input type="button" />
+                    Edit
+                    <input type="button" />
+                    Delete
+                  </li>
+                </>
+              ))
+            : null}
+        </ul>
+      </div>
+
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input type="textarea" name="name" onChange={handleChange} />
+            <button type="submit">Agregar</button>
+          </label>
+        </form>
+      </div>
+    </>
   );
 }
 
