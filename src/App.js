@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
@@ -6,9 +6,9 @@ function App() {
   const [name, setName] = useState("");
   const [tasks, setTasks] = useState([]);
 
+
   console.log(tasks);
   console.log(name);
- 
 
   // const handleChange = (ev) => {
   //   setName((prevState) => ({
@@ -26,16 +26,14 @@ function App() {
   };
 
   const checkTask = (ev, id) => {
-    const tasksAfterCheck = tasks.map(task => {
-      if (task.id === id){
-        task.completed = !task.completed
+    const tasksAfterCheck = tasks.map((task) => {
+      if (task.id === id) {
+        task.completed = !task.completed;
       }
-      return task     
+      return task;
     });
     setTasks(tasksAfterCheck);
   };
-
-  //bug: cuando borras una task si hay inputs checkbox marcados debajo, estos se desmarcan (aunque los valores se mantienen)
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -43,22 +41,28 @@ function App() {
       ...prevState,
       { id: nanoid(), name: name, completed: false },
     ]);
+    setName("");
   };
+
 
   return (
     <>
-      <h2> My First (Ever) Todo List</h2>
-      <div className="list">
-        <ul>
+      <h2 className="heading"> My First (Ever) Todo List</h2>
+      <div>
+        <ul className="list">
           {" "}
           {tasks.length
             ? tasks.map((task) => (
                 <>
-                  <li key={task.id}>
-                    {task.name}
+                  <li className="task" key={task.id}>
+                    <span className={task.completed ? "completed" : ""}>
+                      {" "}
+                      {task.name}
+                    </span>
                     <input
                       type="checkbox"
                       onChange={(ev) => checkTask(ev, task.id)}
+                      defaultChecked={task.completed}
                     />
                     Completed
                     <button>Edit</button>
@@ -72,16 +76,19 @@ function App() {
         </ul>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label>
-          <input type="textarea" name="name" onChange={addTask} />
-          <button type="submit">Agregar</button>
+          <input type="textarea" name="name" value={name} onChange={addTask} />
         </label>
+        <button className="add-button" type="submit">
+          Add
+        </button>
       </form>
-
-      <button>Show All</button>
-      <button>Show All Active</button>
-      <button>Show All Completed</button>
+      <div className="show-buttons">
+        <button>Show All</button>
+        <button>Show All Active</button>
+        <button>Show All Completed</button>
+      </div>
     </>
   );
 }
