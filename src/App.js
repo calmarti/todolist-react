@@ -5,11 +5,10 @@ import { nanoid } from "nanoid";
 function App() {
   const [name, setName] = useState("");
   const [tasks, setTasks] = useState([]);
-
+  const [filter, setFilter] = useState("all");
 
   console.log(tasks);
-  console.log(name);
-
+  console.log(filter);
 
   const addTask = (ev) => {
     setName(ev.target.value);
@@ -18,6 +17,10 @@ function App() {
   const deleteTask = (ev, id) => {
     setTasks(tasks.filter((task) => task.id != id));
   };
+
+//TODO: última funcionalidad por implementar:
+//const editTask()
+
 
   const checkTask = (ev, id) => {
     const tasksAfterCheck = tasks.map((task) => {
@@ -38,22 +41,42 @@ function App() {
     setName("");
   };
 
+  const showActiveTasks = () => {
+    setFilter("active");
+  };
 
-//TODO: mostrar active tasks no debe suponer alterar el estado tasks
-// const showActiveTasks = (ev) =>{
-// const activeTasks = tasks.filter(task=>task.completed===false);
-// setTasks(activeTasks);
-// }
+  const showCompletedTasks = () => {
+    setFilter("completed");
+  };
 
+  const showAllTasks = () => {
+    setFilter("all");
+  };
 
+  let filteredTasks = tasks;
+  switch (filter) {
+    case "all":
+      filteredTasks = tasks;
+      break;
+    case "active":
+      filteredTasks = tasks.filter((task) => task.completed === false);
+       break;
+    case "completed":
+      filteredTasks = tasks.filter((task) => task.completed === true);
+      break;
+    default:
+      filteredTasks = tasks;
+  }
+
+ 
   return (
     <>
       <h2 className="heading"> My First (Ever) Todo List</h2>
       <div>
         <ul className="list">
           {" "}
-          {tasks.length
-            ? tasks.map((task) => (
+          {filteredTasks.length
+            ? filteredTasks.map((task) => (
                 <>
                   <li className="task" key={task.id}>
                     <span className={task.completed ? "completed" : ""}>
@@ -65,15 +88,16 @@ function App() {
                       onChange={(ev) => checkTask(ev, task.id)}
                       defaultChecked={task.completed}
                     />
-                    Completed
-                    <button>Edit</button>
+                    <button /* onClick={(ev) => editTask(ev, task.id)} */>
+                      Edit
+                    </button>
                     <button onClick={(ev) => deleteTask(ev, task.id)}>
                       Delete
                     </button>
                   </li>
                 </>
               ))
-            : null}
+            : null }
         </ul>
       </div>
 
@@ -86,9 +110,21 @@ function App() {
         </button>
       </form>
       <div className="show-buttons">
-        <button className="show-buttons-item show-all" /* onClick={showAllTasks} */>Show All</button>
-        <button className="show-buttons-item show-active" /* onClick={showActiveTasks} */>Show All Active</button>
-        <button className="show-buttons-item show-completed" /* onClick={showCompletedTask} */>Show All Completed</button>
+        <button className="show-buttons-item show-all" onClick={showAllTasks}>
+          All
+        </button>
+        <button
+          className="show-buttons-item show-active"
+          onClick={showActiveTasks}
+        >
+          Active
+        </button>
+        <button
+          className="show-buttons-item show-completed"
+          onClick={showCompletedTasks}
+        >
+          Completed
+        </button>
       </div>
     </>
   );
