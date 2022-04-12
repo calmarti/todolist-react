@@ -2,7 +2,9 @@ import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import List from "./List";
-import { Input } from "antd";
+import { Input, Form, Button } from "antd";
+
+//TODO: Form y Form.Item (tanto para Input como para Button) no pillan el sistema de grid (span:24, etc.), posible predominio de las reglas de app.css
 
 function App() {
   const [name, setName] = useState("");
@@ -72,16 +74,16 @@ function App() {
   return (
     <>
       <h2 className="heading"> My First (Ever) Todo List</h2>
-      <div>
-        {filteredTasks.length ? (
-          <List
-            tasks={filteredTasks}
-            checkTask={checkTask}
-            deleteTask={deleteTask}
-          />
-        ) : null}
 
-        {/* {<ul className="list">
+      {filteredTasks.length ? (
+        <List
+          tasks={filteredTasks}
+          checkTask={checkTask}
+          deleteTask={deleteTask}
+        />
+      ) : null}
+
+      {/* {<ul className="list">
           {" "}
           {filteredTasks.length
             ? filteredTasks.map((task) => (
@@ -107,35 +109,67 @@ function App() {
               ))
             : null }
         </ul> */}
-      </div>
 
-      <form className="form" onSubmit={handleSubmit}>
-        <label>
-          <Input /* type="textarea"  */showCount maxLength={100} placeholder="Add a task" name="name" value={name} onChange={addTask} />
-        </label>
-        {/* problema: type del componente Button  */}
-        <button type="submit" /* type="primary" */ /* size={{size:"large"}} block  */className="add-button" >
-          Add
-        </button>
-      </form>
+      <Form
+        /* style={{border:"solid black 1px"}} */
+        name="basic"
+        /*  labelCol={{ span: 8 }} */
+        wrapperCol={{ span: 24 }}
+        /*  className="form"  */ onSubmit={handleSubmit}
+      >
+        <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
+          <Input
+            /*  style={{width:""}} */
+            label="name"
+            maxLength={100}
+            showCount
+            /* type="textarea"  */
+            placeholder="Add a task"
+            name="name"
+            value={name}
+            onChange={addTask}
+          />
+        </Form.Item>
 
+        <Form.Item wrapperCol={{ offset: 10 }}>
+          <Button
+            style={{ padding: "0 6rem" }}
+            /* type="submit"  */ type="primary"
+            className="add-button"
+            onClick={handleSubmit}
+          >
+            Add task
+          </Button>
+        </Form.Item>
+      </Form>
 
       <div className="show-buttons">
-        <button className="show-buttons-item show-all" onClick={showAllTasks}>
+        <Button
+       
+          type="default"
+          style={{ backgroundColor: "#69c0ff" /* , color:"white"  */}}
+          /* className="show-all" */ 
+          onClick={showAllTasks}
+        >
           All
-        </button>
-        <button
-          className="show-buttons-item show-active"
+        </Button>
+        <Button 
+        type="default"
+        style={{ backgroundColor: "#91d5ff" /* , color:"white"  */}}
+
+          /*   className="show-active" */
           onClick={showActiveTasks}
         >
           Active
-        </button>
-        <button
-          className="show-buttons-item show-completed"
+        </Button>
+        <Button 
+          type="default"
+          style={{ backgroundColor: "#bae7ff"}}
+          /* className="show-completed" */
           onClick={showCompletedTasks}
         >
           Completed
-        </button>
+        </Button>
       </div>
     </>
   );

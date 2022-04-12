@@ -11,24 +11,26 @@
   text-decoration: line-through;
 }
 
-.list {
+/* .list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
   align-items: center;
-}
+} */
+
 .task {
   list-style-type: none;
 }
 
-.form {
+/* .form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
   align-items:center;
-}
+ 
+} */
 
 .add-button{
   /*   flex: 0 1 auto; */
@@ -38,15 +40,14 @@
 .show-buttons{
     display:flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     text-align: center;
-    margin-top:5rem;
+    margin-top:3rem;
+    align-items:center;
 }
 
-.show-buttons-item{
- /*    width:50%; */
-}
 
+/* 
 .show-active{
 background-color: yellow;
 
@@ -58,4 +59,4 @@ background-color: red;
 
 .show-all{
     background-color: green;
-}
+} */
