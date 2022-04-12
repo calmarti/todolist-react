@@ -1,6 +1,8 @@
 import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import List from "./List";
+
 
 function App() {
   const [name, setName] = useState("");
@@ -15,12 +17,11 @@ function App() {
   };
 
   const deleteTask = (ev, id) => {
-    setTasks(tasks.filter((task) => task.id != id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
-//TODO: última funcionalidad por implementar:
-//const editTask()
-
+  //TODO: última funcionalidad por implementar:
+  //const editTask()
 
   const checkTask = (ev, id) => {
     const tasksAfterCheck = tasks.map((task) => {
@@ -60,7 +61,7 @@ function App() {
       break;
     case "active":
       filteredTasks = tasks.filter((task) => task.completed === false);
-       break;
+      break;
     case "completed":
       filteredTasks = tasks.filter((task) => task.completed === true);
       break;
@@ -68,12 +69,19 @@ function App() {
       filteredTasks = tasks;
   }
 
- 
   return (
     <>
       <h2 className="heading"> My First (Ever) Todo List</h2>
       <div>
-        <ul className="list">
+        {filteredTasks.length ? (
+          <List
+            tasks={filteredTasks}
+            checkTask={checkTask}
+            deleteTask={deleteTask}
+          />
+        ) : null}
+
+        {/* {<ul className="list">
           {" "}
           {filteredTasks.length
             ? filteredTasks.map((task) => (
@@ -88,7 +96,7 @@ function App() {
                       onChange={(ev) => checkTask(ev, task.id)}
                       defaultChecked={task.completed}
                     />
-                    <button /* onClick={(ev) => editTask(ev, task.id)} */>
+                    <button onClick={(ev) => editTask(ev, task.id)}>
                       Edit
                     </button>
                     <button onClick={(ev) => deleteTask(ev, task.id)}>
@@ -98,7 +106,7 @@ function App() {
                 </>
               ))
             : null }
-        </ul>
+        </ul> */}
       </div>
 
       <form className="form" onSubmit={handleSubmit}>
