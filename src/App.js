@@ -2,7 +2,7 @@ import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import List from "./List";
-
+import { Input } from "antd";
 
 function App() {
   const [name, setName] = useState("");
@@ -111,12 +111,15 @@ function App() {
 
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          <input type="textarea" name="name" value={name} onChange={addTask} />
+          <Input /* type="textarea"  */showCount maxLength={100} placeholder="Add a task" name="name" value={name} onChange={addTask} />
         </label>
-        <button className="add-button" type="submit">
+        {/* problema: type del componente Button  */}
+        <button type="submit" /* type="primary" */ /* size={{size:"large"}} block  */className="add-button" >
           Add
         </button>
       </form>
+
+
       <div className="show-buttons">
         <button className="show-buttons-item show-all" onClick={showAllTasks}>
           All

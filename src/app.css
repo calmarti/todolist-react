@@ -1,4 +1,6 @@
 @import '~antd/dist/antd.css';
+/* @import '~antd/lib/style/themes/default.less'; */
+
 
 .heading{
     text-align: center;
@@ -29,7 +31,8 @@
 }
 
 .add-button{
-    flex: 0 1 auto;
+  /*   flex: 0 1 auto; */
+  background-color: #1890ff;
 }
 
 .show-buttons{
