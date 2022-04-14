@@ -11,13 +11,13 @@
   text-decoration: line-through;
 }
 
-/* .list {
+.list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
   align-items: center;
-} */
+}
 
 .task {
   list-style-type: none;

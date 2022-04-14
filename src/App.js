@@ -2,7 +2,7 @@ import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import List from "./List";
-import { Input, Form, Button } from "antd";
+import { Input, Form, Button, Row, Col } from "antd";
 
 //TODO: Form y Form.Item (tanto para Input como para Button) no pillan el sistema de grid (span:24, etc.), posible predominio de las reglas de app.css
 
@@ -131,9 +131,11 @@ function App() {
           />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 10 }}>
+        <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
+          {" "}
           <Button
-            style={{ padding: "0 6rem" }}
+            block
+            /*  style={{ padding: "0 17rem" }} */
             /* type="submit"  */ type="primary"
             className="add-button"
             onClick={handleSubmit}
@@ -143,33 +145,51 @@ function App() {
         </Form.Item>
       </Form>
 
-      <div className="show-buttons">
-        <Button
-       
-          type="default"
-          style={{ backgroundColor: "#69c0ff" /* , color:"white"  */}}
-          /* className="show-all" */ 
-          onClick={showAllTasks}
-        >
-          All
-        </Button>
-        <Button 
-        type="default"
-        style={{ backgroundColor: "#91d5ff" /* , color:"white"  */}}
+      <div /* className="show-buttons" */>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={12} offset={6}>
+            <Button
+              type="default"
+              size="large"
+              style={{ backgroundColor: "#69c0ff" }}
+              block
+              /* className="show-all" */
+              onClick={showAllTasks}
+            >
+              All
+            </Button>
+          </Col>
+        </Row>
 
-          /*   className="show-active" */
-          onClick={showActiveTasks}
-        >
-          Active
-        </Button>
-        <Button 
-          type="default"
-          style={{ backgroundColor: "#bae7ff"}}
-          /* className="show-completed" */
-          onClick={showCompletedTasks}
-        >
-          Completed
-        </Button>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={12} offset={6}>
+            <Button
+              type="default"
+              size="large"
+              style={{ backgroundColor: "#91d5ff" }}
+              block
+              /*   className="show-active" */
+              onClick={showActiveTasks}
+            >
+              Active
+            </Button>
+          </Col>
+        </Row>
+
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={12} offset={6}>
+            <Button
+              type="default"
+              size="large"
+              style={{ backgroundColor: "#bae7ff" }}
+              block
+              /* className="show-completed" */
+              onClick={showCompletedTasks}
+            >
+              Completed
+            </Button>
+          </Col>
+        </Row>
       </div>
     </>
   );
