@@ -4,7 +4,14 @@ import { nanoid } from "nanoid";
 import List from "./List";
 import { Input, Form, Button, Row, Col } from "antd";
 
-//TODO: Form y Form.Item (tanto para Input como para Button) no pillan el sistema de grid (span:24, etc.), posible predominio de las reglas de app.css
+//TODO: estilos de la task: tipografía chula, al hacer hover en la task: box-shadow, text-shadow o algo similar, esquinas un pelo redondeadas
+//TODO: al hacer hover mostrar texto con funcionalidad del icono 
+//TODO: meter un Header y dentro el h2
+//TODO: Footer con enlaces a linkedIn y GitHub
+//TODO: mirar todo list de Lola Rufino a ver que más ...
+//TODO: implementar un contador de tareas activas (count = new + active + count)
+//TODO: ¿implementar un carrusel con el top 3?
+
 
 function App() {
   const [name, setName] = useState("");
