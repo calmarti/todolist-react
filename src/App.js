@@ -4,32 +4,38 @@ import { nanoid } from "nanoid";
 import List from "./List";
 import { Layout, Input, Form, Button, Row, Col } from "antd";
 
-import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
+import {
+  LinkedinOutlined,
+  GithubOutlined,
+  TwitterOutlined,
+} from "@ant-design/icons";
 
 const { Header, Content, Footer } = Layout;
 
 //TODO: arreglar altura del root (por defecto extrañamente pequeña, luego se ajusta en función del espacio que ocupan las tasks)
 //TODO: falta funcionalidad de editar
-//TODO: aumentar tamaño por defecto (no el del hovel) de iconos de linkedIn y GitHub
+//TODO: aumentar tamaño por defecto (no el del hover) de iconos de linkedIn y GitHub
 //TODO: mirar todo list de Lola Rufino a ver que más ...
 //TODO: implementar un contador de tareas activas (count = new + active + count)
-
-
+//TODO: refactorizar (sin pasarme)
 
 function App() {
   const [name, setName] = useState("");
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [count, setCount] = useState(0);
 
   console.log(tasks);
   console.log(filter);
 
   const addTask = (ev) => {
     setName(ev.target.value);
+    setCount((count) => count + 1);
   };
 
   const deleteTask = (ev, id) => {
     setTasks(tasks.filter((task) => task.id !== id));
+    setCount((count) => count - 1);
   };
 
   //TODO: última funcionalidad por implementar:
@@ -122,6 +128,7 @@ function App() {
             {" "}
             <Button
               block
+              size="large"
               /*  style={{ padding: "0 17rem" }} */
               /* type="submit"  */ type="primary"
               className="add-button"
@@ -178,11 +185,20 @@ function App() {
             </Col>
           </Row>
         </div>
+
+        <div>Total tasks: </div>
       </Content>
 
       <Footer className="footer">
-        <a href="http://linkedin.com/in/calmarti-full-stack-developer"><LinkedinOutlined className="zoom" /></a>
-        <a href="https://github.com/calmarti"><GithubOutlined className="zoom" /></a>
+        <a href="http://linkedin.com/in/calmarti-full-stack-developer">
+          <LinkedinOutlined className="icon" />
+        </a>
+        <a href="https://github.com/calmarti">
+          <GithubOutlined className="icon" />
+        </a>
+        <a href="https://twitter.com/calmartithings">
+          <TwitterOutlined className="icon" />
+        </a>
       </Footer>
     </Layout>
   );

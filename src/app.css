@@ -14,7 +14,7 @@ body {
 
 .heading {
   text-align: center;
-  margin: 0rem 0;
+  margin: 0rem auto;
   font-weight: bold;
   color: white;
  
@@ -39,7 +39,7 @@ body {
 }
 
  .form {
-   margin-top:2rem;
+   margin-top:4.5rem;
 /*   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -51,6 +51,8 @@ body {
 .add-button {
   /*   flex: 0 1 auto; */
   background-color: #1890ff;
+  margin: 0 auto;
+
 }
 
 .show-buttons {
@@ -65,7 +67,7 @@ body {
 
 .row-container {
   margin: 0 auto;
-  width: 80%;
+  width: 60%;
   /*   border:dotted 1px black; */
   background-color: #91d5ff;
   border-radius:4px;
@@ -94,11 +96,14 @@ body {
   display:flex;
   justify-content:center;
   gap:2rem;
-  margin-top:4rem;
-  color:white;
+  margin-top:14rem;
   background-color:#001529;
 }
 
-.zoom:hover{
+.icon{
+  color:white;
+}
+
+.icon:hover{
   transform: scale(2);
 }
