@@ -6,14 +6,13 @@ import {
 
 export default function List({ tasks, checkTask, deleteTask }) {
   return (
-    <ul /* className="list" */>
+    <ul className="list">
       {tasks.map((task) => (
         <li className="task" key={task.id}>
           <div className="row-container">
             <Row
               justify="center"
               style={{
-                /*  border: "dotted 1px black", */
                 margin: "0.4rem 0",
                 padding: "1rem 0 0 0",
               }}
@@ -21,9 +20,9 @@ export default function List({ tasks, checkTask, deleteTask }) {
             >
               <div className="col-container">
                 <Col
-              /*     style={{ border: "solid 1px blue" }} */
+                  /*     style={{ border: "solid 1px blue" }} */
                   className="gutter-row"
-                  span={20}
+                  span={18}
                 >
                   <p
                     style={{
@@ -32,7 +31,7 @@ export default function List({ tasks, checkTask, deleteTask }) {
                     className={task.completed ? "completed" : ""}
                   >
                     {" "}
-                    {task.name}
+                    <strong>{task.name}</strong>
                   </p>
                 </Col>
 
