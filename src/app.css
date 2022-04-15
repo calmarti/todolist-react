@@ -48,6 +48,14 @@ body {
  
 } 
 
+.counter-container{
+  display:flex;
+  gap:1rem;
+  position:relative;
+  top:3.2rem;
+  left:3rem;
+}
+
 .add-button {
   /*   flex: 0 1 auto; */
   background-color: #1890ff;

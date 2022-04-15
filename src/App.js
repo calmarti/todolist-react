@@ -2,7 +2,7 @@ import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import List from "./List";
-import { Layout, Input, Form, Button, Row, Col } from "antd";
+import { Layout, Input, Form, Button, Row, Col, Switch, Badge } from "antd";
 
 import {
   LinkedinOutlined,
@@ -24,13 +24,13 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
   const [count, setCount] = useState(0);
+  const [showCount, setShowCount] = useState(false);
 
   console.log(tasks);
   console.log(filter);
 
   const addTask = (ev) => {
     setName(ev.target.value);
-    setCount((count) => count + 1);
   };
 
   const deleteTask = (ev, id) => {
@@ -58,6 +58,7 @@ function App() {
       { id: nanoid(), name: name, completed: false },
     ]);
     setName("");
+    setCount((count) => count + 1);
   };
 
   const showActiveTasks = () => {
@@ -94,6 +95,16 @@ function App() {
         <h2 className="heading"> A Todo List built with React</h2>
       </Header>
       <Content>
+        
+      <div className="counter-container">
+            <Switch
+              checked={showCount}
+              onChange={() => setShowCount(!showCount)}
+            />
+            <span>Total tasks:</span>
+            <Badge count={showCount ? count : null} />
+          </div>
+
         {filteredTasks.length ? (
           <List
             tasks={filteredTasks}
@@ -110,6 +121,8 @@ function App() {
           className="form"
           onSubmit={handleSubmit}
         >
+
+
           <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
             <Input
               /*  style={{width:""}} */
@@ -185,8 +198,6 @@ function App() {
             </Col>
           </Row>
         </div>
-
-        <div>Total tasks: </div>
       </Content>
 
       <Footer className="footer">
