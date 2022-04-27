@@ -3,7 +3,7 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import List from "./List";
 import Counter from "./Counter";
-import { Layout, Input, Form, Button, Row, Col, Switch, Badge } from "antd";
+import { Layout, Input, Form, Button, Row, Col } from "antd";
 
 import {
   LinkedinOutlined,
@@ -83,13 +83,19 @@ function App() {
     <Layout className="layout">
       <Header>
         {" "}
-        <h2 className="heading"> A Todo List built with React and Ant Design</h2>
+        <h2 className="heading">
+          {" "}
+          A Todo List built with React and Ant Design
+        </h2>
       </Header>
       <Content>
-        
-        <Counter count={count} showCount={showCount} setShowCount={setShowCount} />
+        <Counter
+          count={count}
+          showCount={showCount}
+          setShowCount={setShowCount}
+        />
 
-         {filteredTasks.length ? (
+        {filteredTasks.length ? (
           <List
             tasks={filteredTasks}
             checkTask={checkTask}
@@ -105,8 +111,6 @@ function App() {
           className="form"
           onSubmit={handleSubmit}
         >
-
-
           <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
             <Input
               /*  style={{width:""}} */
@@ -185,14 +189,15 @@ function App() {
       </Content>
 
       <Footer className="footer">
+        <span style={{color:"#FFFFFF"}}>©2022</span>
         <a href="http://linkedin.com/in/calmarti-full-stack-developer">
-          <LinkedinOutlined className="icon" />
+          <LinkedinOutlined className="icon" style={{fontSize:"26px"}} />
         </a>
         <a href="https://github.com/calmarti">
-          <GithubOutlined className="icon" />
+          <GithubOutlined className="icon" style={{fontSize:"26px"}} />
         </a>
         <a href="https://twitter.com/calmartithings">
-          <TwitterOutlined className="icon" />
+          <TwitterOutlined className="icon" style={{fontSize:"26px"}} />
         </a>
       </Footer>
     </Layout>

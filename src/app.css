@@ -1,5 +1,4 @@
 @import "~antd/dist/antd.css";
-/* @import '~antd/lib/style/themes/default.less'; */
 
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap");
 
@@ -29,11 +28,6 @@ body {
 
 .list {
   margin-top: 2rem;
-  /*   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center; */
 }
 
 .task {
@@ -95,6 +89,8 @@ body {
   gap: 2rem;
   margin-top: 14rem;
   background-color: #001529;
+  max-height: 0.4rem;
+  padding:1rem 0 2.5rem 0;
 }
 
 .icon {
@@ -102,5 +98,5 @@ body {
 }
 
 .icon:hover {
-  transform: scale(2);
+  transform: scale(1.5);
 }
