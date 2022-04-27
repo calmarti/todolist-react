@@ -20,8 +20,6 @@ function App() {
   const [count, setCount] = useState(0);
   const [showCount, setShowCount] = useState(false);
 
-  console.log(tasks);
-  console.log(filter);
 
   const addTask = (ev) => {
     setName(ev.target.value);
