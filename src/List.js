@@ -1,8 +1,5 @@
 import { Row, Col, Checkbox, Divider, Button } from "antd";
-import {
-  /* CheckSquareOutlined,  */ DeleteOutlined,
-  EditOutlined,
-} from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 export default function List({ tasks, checkTask, deleteTask }) {
   return (

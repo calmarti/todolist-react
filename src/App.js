@@ -2,6 +2,7 @@ import "./app.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import List from "./List";
+import Counter from "./Counter";
 import { Layout, Input, Form, Button, Row, Col, Switch, Badge } from "antd";
 
 import {
@@ -11,13 +12,6 @@ import {
 } from "@ant-design/icons";
 
 const { Header, Content, Footer } = Layout;
-
-//TODO: arreglar altura del root (por defecto extrañamente pequeña, luego se ajusta en función del espacio que ocupan las tasks)
-//TODO: falta funcionalidad de editar
-//TODO: aumentar tamaño por defecto (no el del hover) de iconos de linkedIn y GitHub
-//TODO: mirar todo list de Lola Rufino a ver que más ...
-//TODO: implementar un contador de tareas activas (count = new + active + count)
-//TODO: refactorizar (sin pasarme)
 
 function App() {
   const [name, setName] = useState("");
@@ -37,9 +31,6 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
     setCount((count) => count - 1);
   };
-
-  //TODO: última funcionalidad por implementar:
-  //const editTask()
 
   const checkTask = (ev, id) => {
     const tasksAfterCheck = tasks.map((task) => {
@@ -89,23 +80,16 @@ function App() {
   }
 
   return (
-    <Layout>
+    <Layout className="layout">
       <Header>
         {" "}
-        <h2 className="heading"> A Todo List built with React</h2>
+        <h2 className="heading"> A Todo List built with React and Ant Design</h2>
       </Header>
       <Content>
         
-      <div className="counter-container">
-            <Switch
-              checked={showCount}
-              onChange={() => setShowCount(!showCount)}
-            />
-            <span>Total tasks:</span>
-            <Badge count={showCount ? count : null} />
-          </div>
+        <Counter count={count} showCount={showCount} setShowCount={setShowCount} />
 
-        {filteredTasks.length ? (
+         {filteredTasks.length ? (
           <List
             tasks={filteredTasks}
             checkTask={checkTask}
