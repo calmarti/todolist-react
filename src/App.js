@@ -20,7 +20,6 @@ function App() {
   const [count, setCount] = useState(0);
   const [showCount, setShowCount] = useState(false);
 
-
   const addTask = (ev) => {
     setName(ev.target.value);
   };
@@ -102,20 +101,18 @@ function App() {
         ) : null}
 
         <Form
-          /* style={{border:"solid black 1px"}} */
+        
           name="basic"
-          /*  labelCol={{ span: 8 }} */
           wrapperCol={{ span: 24 }}
           className="form"
           onSubmit={handleSubmit}
         >
           <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
             <Input
-              /*  style={{width:""}} */
+            size="large"
               label="name"
               maxLength={100}
               showCount
-              /* type="textarea"  */
               placeholder="Add a task"
               name="name"
               value={name}
@@ -128,8 +125,7 @@ function App() {
             <Button
               block
               size="large"
-              /*  style={{ padding: "0 17rem" }} */
-              /* type="submit"  */ type="primary"
+              type="primary"
               className="add-button"
               onClick={handleSubmit}
             >
@@ -187,15 +183,15 @@ function App() {
       </Content>
 
       <Footer className="footer">
-        <span style={{color:"#FFFFFF"}}>©2022</span>
+        <span style={{ color: "#FFFFFF" }}>©2022</span>
         <a href="http://linkedin.com/in/calmarti-full-stack-developer">
-          <LinkedinOutlined className="icon" style={{fontSize:"26px"}} />
+          <LinkedinOutlined className="icon" style={{ fontSize: "26px" }} />
         </a>
         <a href="https://github.com/calmarti">
-          <GithubOutlined className="icon" style={{fontSize:"26px"}} />
+          <GithubOutlined className="icon" style={{ fontSize: "26px" }} />
         </a>
         <a href="https://twitter.com/calmartithings">
-          <TwitterOutlined className="icon" style={{fontSize:"26px"}} />
+          <TwitterOutlined className="icon" style={{ fontSize: "26px" }} />
         </a>
       </Footer>
     </Layout>

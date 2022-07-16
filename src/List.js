@@ -1,4 +1,4 @@
-import { Row, Col, Checkbox, Divider, Button } from "antd";
+import { Row, Col, Checkbox } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 export default function List({ tasks, checkTask, deleteTask }) {
@@ -17,13 +17,13 @@ export default function List({ tasks, checkTask, deleteTask }) {
             >
               <div className="col-container">
                 <Col
-                  /*     style={{ border: "solid 1px blue" }} */
+              
                   className="gutter-row"
                   span={18}
                 >
                   <p
                     style={{
-                      display: "inline-block" /* , border: "solid 1px red" */,
+                      display: "inline-block" ,
                     }}
                     className={task.completed ? "completed" : ""}
                   >
@@ -33,7 +33,7 @@ export default function List({ tasks, checkTask, deleteTask }) {
                 </Col>
 
                 <Col className="gutter-row" span={1}>
-                  {/*  <CheckSquareOutlined /> */}
+                
                   <Checkbox
                     //   type="checkbox"
                     onChange={(ev) => checkTask(ev, task.id)}
