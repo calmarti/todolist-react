@@ -5,13 +5,11 @@ Live demo:
 http://todolistreact.calmartiportfolio.com
 ```
 ---
+# Features
+- It handles the state locally with the useState hook
+- It integrates with the Ant Design React components library 
 
-This prototype has the basic features of a regular TODO list built with react (v.18). 
-
-- It handles the state locally
-- It uses Ant Design components  
-
-The user can:
+# User stories
 - Add and delete tasks
 - Check out completed tasks
 - See the list of all tasks, all active tasks, as     well as all completed tasks 
