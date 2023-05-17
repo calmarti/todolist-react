@@ -1,4 +1,6 @@
-# (Yet another) TODO app built with React and Ant Design 
+# (Yet another) TODO app
+
+## Built with React and Ant Design 
 ---
 Live demo:
 ```sh
